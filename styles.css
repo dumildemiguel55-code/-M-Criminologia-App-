@@ -1,0 +1,700 @@
+/* ==========================================================================
+   PALETA DE CORES: Preto (#06080e), Azul (#00f2fe), Prateado (#c0c9d6), Branco (#ffffff)
+   ========================================================================== */
+
+:root {
+    --bg-dark: #06080e;
+    --bg-card: rgba(15, 23, 42, 0.75);
+    --blue-primary: #00f2fe;
+    --blue-secondary: #0066ff;
+    --blue-glow: rgba(0, 242, 254, 0.25);
+    --silver-light: #e2e8f0;
+    --silver-mid: #94a3b8;
+    --silver-border: rgba(192, 201, 214, 0.2);
+    --white: #ffffff;
+    --correct: #10b981;
+    --wrong: #ef4444;
+    --font-title: 'Orbitron', sans-serif;
+    --font-sub: 'Rajdhani', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--silver-light);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fundo Iluminado */
+.bg-glow {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 20%, rgba(0, 102, 255, 0.15) 0%, rgba(6, 8, 14, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background: rgba(6, 8, 14, 0.85);
+    border-bottom: 1px solid var(--silver-border);
+    backdrop-filter: blur(10px);
+}
+
+.logo-container {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo-prefix {
+    color: var(--blue-primary);
+}
+
+.logo-title {
+    color: var(--white);
+}
+
+.user-stats-bar {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.stat-badge {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--silver-border);
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--silver-mid);
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-family: var(--font-sub);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--blue-primary);
+}
+
+/* Layout dos Ecrãs */
+.main-container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    flex: 1;
+}
+
+.screen {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.screen.active {
+    display: block;
+    opacity: 1;
+}
+
+.section-title-box {
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--blue-primary);
+    padding-left: 1rem;
+}
+
+.section-title-box h2 {
+    font-family: var(--font-title);
+    color: var(--white);
+    letter-spacing: 1.5px;
+}
+
+.section-title-box p {
+    color: var(--silver-mid);
+}
+
+/* Módulos e Disciplinas Grid */
+.modules-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.module-card {
+    background: var(--bg-card);
+    border: 1px solid var(--silver-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(12px);
+}
+
+.module-header {
+    font-family: var(--font-title);
+    color: var(--blue-primary);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--silver-border);
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.disciplines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.discipline-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--silver-border);
+    border-radius: 8px;
+    padding: 1rem;
+    color: var(--white);
+    font-family: var(--font-sub);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.discipline-btn:hover {
+    background: var(--blue-glow);
+    border-color: var(--blue-primary);
+    transform: translateY(-2px);
+}
+
+/* Ecrã de Quiz */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.quiz-meta {
+    text-align: center;
+}
+
+.meta-tag {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--blue-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.meta-title {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: var(--white);
+}
+
+.timer-box {
+    background: rgba(0, 242, 254, 0.1);
+    border: 1px solid var(--blue-primary);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-family: var(--font-title);
+    color: var(--blue-primary);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--blue-secondary), var(--blue-primary));
+    transition: width 0.3s ease;
+}
+
+.question-card {
+    background: var(--bg-card);
+    border: 1px solid var(--silver-border);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.question-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--silver-mid);
+    margin-bottom: 1rem;
+}
+
+.badge-type {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+}
+
+.question-text {
+    font-size: 1.3rem;
+    color: var(--white);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.option-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--silver-border);
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    color: var(--silver-light);
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--silver-mid);
+}
+
+.option-btn.correct {
+    background: rgba(16, 185, 129, 0.2) !important;
+    border-color: var(--correct) !important;
+    color: var(--white) !important;
+}
+
+.option-btn.wrong {
+    background: rgba(239, 68, 68, 0.2) !important;
+    border-color: var(--wrong) !important;
+    color: var(--white) !important;
+}
+
+/* Área de Dica & Feedback */
+.hint-section {
+    margin-top: 1rem;
+}
+
+.btn-hint {
+    background: transparent;
+    border: 1px dashed var(--silver-mid);
+    color: var(--silver-mid);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.btn-hint:hover {
+    color: var(--blue-primary);
+    border-color: var(--blue-primary);
+}
+
+.hint-box {
+    background: rgba(0, 242, 254, 0.05);
+    border-left: 3px solid var(--blue-primary);
+    padding: 1rem;
+    margin-top: 0.8rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+}
+
+.feedback-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--silver-border);
+}
+
+.feedback-status {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.feedback-status.success {
+    color: var(--correct);
+}
+
+.feedback-status.error {
+    color: var(--wrong);
+}
+
+.rationale-title {
+    font-weight: 600;
+    color: var(--blue-primary);
+    margin-top: 0.5rem;
+}
+
+/* Botões Globais */
+.btn-primary {
+    background: linear-gradient(135deg, var(--blue-secondary), var(--blue-primary));
+    color: #000;
+    font-family: var(--font-title);
+    font-weight: 700;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--blue-glow);
+}
+
+.btn-silver {
+    background: transparent;
+    border: 1px solid var(--silver-border);
+    color: var(--silver-mid);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-silver:hover {
+    color: var(--white);
+    border-color: var(--white);
+}
+
+/* Ecrã de Resultados */
+.result-card {
+    background: var(--bg-card);
+    border: 1px solid var(--silver-border);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.result-card h2 {
+    font-family: var(--font-title);
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.result-subtitle {
+    color: var(--blue-primary);
+    margin-bottom: 2.5rem;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.metric-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--silver-border);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.metric-value {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    color: var(--white);
+}
+
+.metric-label {
+    font-size: 0.8rem;
+    color: var(--silver-mid);
+    text-transform: uppercase;
+}
+
+.hidden {
+    display: none !important;
+}
+
+:root {
+     --bg-card: #1e293b;
+     --border-color: #334155;
+     --accent-blue: #2563eb;
+     --text-primary: #f8fafc;
+     --text-muted: #94a3b8;
+ }
+
+ .criminologo-bar {
+     background-color: var(--bg-card);
+     border-left: 4px solid var(--accent-blue);
+     border-radius: 8px;
+     padding: 12px 20px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+     color: var(--text-primary);
+     margin: 15px 0;
+ }
+
+ .criminologo-brand {
+     font-weight: 700;
+     font-size: 1.1rem;
+     letter-spacing: 0.5px;
+     text-transform: uppercase;
+ }
+
+ .criminologo-profile {
+     font-size: 0.95rem;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+ }
+
+ .criminologo-label {
+     color: var(--text-muted);
+     font-weight: 500;
+ }
+
+ .criminologo-nome {
+     color: #60a5fa;
+     font-weight: 600;
+ }
+
+ /* Formulário de entrada minimalista */
+ .criminologo-form {
+     display: flex;
+     gap: 8px;
+     align-items: center;
+ }
+
+ .criminologo-input {
+     background: #0f172a;
+     border: 1px solid var(--border-color);
+     color: var(--text-primary);
+     padding: 6px 12px;
+     border-radius: 4px;
+     outline: none;
+     font-size: 0.9rem;
+     transition: border-color 0.2s;
+ }
+
+ .criminologo-input:focus {
+     border-color: var(--accent-blue);
+ }
+
+ .criminologo-btn {
+     background-color: var(--accent-blue);
+     color: #ffffff;
+     border: none;
+     padding: 6px 14px;
+     border-radius: 4px;
+     cursor: pointer;
+     font-weight: 600;
+     font-size: 0.85rem;
+     transition: background-color 0.2s;
+ }
+
+ :root {
+  --bg-main: #0a0e17;
+  --bg-card: #111827;
+  --accent-yellow: #ffd700;
+  --accent-red: #ef4444;
+  --accent-blue: #00f0ff;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border-color: #1f2937;
+  --font-mono: 'Courier New', Courier, monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+ /* identificação do criminologo */
+.criminologo-footer-badge {
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid var(--blue-primary);
+    color: var(--silver-light);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-family: var(--font-sub);
+    font-size: 0.85rem;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+#criminologo-nome-display {
+    color: var(--blue-primary);
+    font-weight: 700;
+}
+
+
+/* Estilos Específicos para a Tela de Boas-Vindas (Hero) */
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    text-align: center;
+    padding: 2rem 1.5rem;
+}
+
+.welcome-card {
+    background: var(--bg-card);
+    border: 1px solid var(--silver-border);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    backdrop-filter: blur(12px);
+    max-width: 680px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.badge-criminologo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 242, 254, 0.08);
+    border: 1px solid var(--blue-primary);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    color: var(--blue-primary);
+    font-family: var(--font-sub);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--silver-mid);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+/* Input rápido para personalizar o nome do Criminólogo */
+.user-welcome-box {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.criminologo-input-hero {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid var(--silver-border);
+    color: var(--white);
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    outline: none;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 320px;
+    transition: border-color 0.2s;
+}
+
+.criminologo-input-hero:focus {
+    border-color: var(--blue-primary);
+    box-shadow: 0 0 10px var(--blue-glow);
+}
+
+.btn-start-training {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+    padding: 1.1rem;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+/* Animação Vem e Vai (Pulse & Glow) */
+.logo-animated {
+    display: inline-block;
+    animation: vemEVai 3s ease-in-out infinite;
+}
+
+@keyframes vemEVai {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px rgba(0, 242, 254, 0.2));
+    }
+
+    50% {
+        transform: scale(1.08);
+        /* Aumenta ligeiramente o tamanho */
+        filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.8));
+        /* Expande o brilho neon */
+    }
+
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px rgba(0, 242, 254, 0.2));
+    }
+}
+
