@@ -9490,3 +9490,57 @@ class P2PTransfer {
     }
   }
 }
+// Contexto de Áudio
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+// Som 1: Clique simples nos botões
+function tocarSomClique() {
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+  gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.05);
+}
+
+// Som 2: Resposta Correta (Tom agudo e alegre em 2 notas)
+function tocarSomAcerto() {
+  const agora = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  
+  osc.type = 'triangle';
+  osc.frequency.setValueAtTime(523.25, agora); // Nota C5
+  osc.frequency.setValueAtTime(659.25, agora + 0.1); // Nota E5
+  
+  gain.gain.setValueAtTime(0.3, agora);
+  gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.3);
+  
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  osc.stop(agora + 0.3);
+}
+
+// Som 3: Resposta Errada (Tom grave e descendente)
+function tocarSomErro() {
+  const agora = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  
+  osc.type = 'sawtooth';
+  osc.frequency.setValueAtTime(220, agora); // Nota A3
+  osc.frequency.linearRampToValueAtTime(110, agora + 0.25); // Desce o tom
+  
+  gain.gain.setValueAtTime(0.3, agora);
+  gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.25);
+  
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  osc.stop(agora + 0.25);
+}
