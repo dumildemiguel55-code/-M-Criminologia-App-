@@ -9192,9 +9192,11 @@ const BANCO_DE_DADOS = [
             dica: "As duas dimensões, quando trabalham em conjunto, reforçam-se mutuamente.",
             justificativa:
               "A articulação entre controlo social formal e informal é relevante porque, quando complementares, ambas as dimensões tendem a fortalecer a eficácia global na promoção da conformidade social e na prevenção da criminalidade.",
-          },
+         },
         ],
       },
+    ],
+  },
 {
     id: "mod-5",
     titulo: "Módulo Especial: Autores da Criminologia Mundial",
@@ -9519,15 +9521,15 @@ const BANCO_DE_DADOS = [
             "Inventarem o conceito de 'cifra negra' da criminalidade.",
           ],
           respostaCorreta: 0,
-          dica: "É um dos primeiros grandes estudos comparativos longitudinais sobre delinquência juvenil, com forte influência posterior (incluindo em Sampson e Laub).",
+          dica:"É um dos primeiros grandes estudos comparativos longitudinais sobre delinquência juvenil, com forte influência posterior (incluindo em Sampson e Laub).",
           justificativa:
             "Os Glueck compararam, ao longo do tempo, grupos de jovens delinquentes e não delinquentes, identificando fatores familiares, sociais e de supervisão parental associados à delinquência — um trabalho empírico que influenciaria décadas depois a Criminologia Desenvolvimental.",
-        },
-      ],
-    },
-  ],
-};
-
+       },
+        ],
+      },
+    ],
+  },
+   
 
 // --------------------------------------------------------------------------
 // ESTADO DA APLICAÇÃO
