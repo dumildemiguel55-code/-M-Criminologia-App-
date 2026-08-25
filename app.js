@@ -9197,10 +9197,41 @@ const BANCO_DE_DADOS = [
       },
     ],
   },
-{
-    id: "mod-5",
-    titulo: "Módulo Especial: Autores da Criminologia Mundial",
-    disciplinas: [
+/**
+ * NOVO MÓDULO: AUTORES DA CRIMINOLOGIA MUNDIAL
+ * ==============================================
+ * Como usar:
+ * 1. Copia o objeto MODULO_CRIMINOLOGIA_MUNDIAL abaixo.
+ * 2. Cola-o dentro do teu array BANCO_DE_DADOS, como mais um módulo
+ *    (por exemplo, depois do "mod-4"), assim:
+ *
+ *    const BANCO_DE_DADOS = [
+ *      { id: "mod-1", ... },
+ *      { id: "mod-2", ... },
+ *      { id: "mod-3", ... },
+ *      { id: "mod-4", ... },
+ *      MODULO_CRIMINOLOGIA_MUNDIAL,   // <-- adicionar aqui
+ *    ];
+ *
+ * Nota sobre o campo "nivel":
+ * Adicionei um campo extra "nivel" ("facil" | "medio" | "dificil") a cada
+ * questão. O motor do quiz atual (verificarResposta/carregarQuestao) NÃO
+ * usa este campo — por isso não quebra nada — mas fica disponível se
+ * quiseres, no futuro, filtrar ou ordenar perguntas por dificuldade.
+ *
+ * Foquei este módulo em autores que ainda NÃO estavam cobertos (ou estavam
+ * pouco cobertos) no resto do banco de dados: Quetelet, Von Hentig,
+ * Mendelsohn, Cohen, Cloward & Ohlin, Wolfgang, Braithwaite, Christie,
+ * Cohen & Felson, Cornish & Clarke, Agnew, Gottfredson & Hirschi, Katz,
+ * Reckless, Akers, Farrington, Wikström, Jeffery & Newman, os Brantingham,
+ * e os Glueck — cobrindo Bélgica, Alemanha, Israel/Roménia, EUA, Austrália,
+ * Noruega, Reino Unido, Suécia e Canadá.
+ */
+
+const MODULO_CRIMINOLOGIA_MUNDIAL = {
+  id: "mod-5",
+  titulo: "Módulo Especial: Autores da Criminologia Mundial",
+  disciplinas: [
     {
       id: "autores-criminologia-mundial",
       nome: "Autores e Teorias da Criminologia Mundial",
@@ -9521,14 +9552,19 @@ const BANCO_DE_DADOS = [
             "Inventarem o conceito de 'cifra negra' da criminalidade.",
           ],
           respostaCorreta: 0,
-          dica:"É um dos primeiros grandes estudos comparativos longitudinais sobre delinquência juvenil, com forte influência posterior (incluindo em Sampson e Laub).",
+          dica: "É um dos primeiros grandes estudos comparativos longitudinais sobre delinquência juvenil, com forte influência posterior (incluindo em Sampson e Laub).",
           justificativa:
             "Os Glueck compararam, ao longo do tempo, grupos de jovens delinquentes e não delinquentes, identificando fatores familiares, sociais e de supervisão parental associados à delinquência — um trabalho empírico que influenciaria décadas depois a Criminologia Desenvolvimental.",
-       },
-        ],
-      },
-    ],
-  },
+        },
+      ],
+    },
+  ],
+};
+
+// Se estiveres num ambiente com módulos, podes exportar assim:
+if (typeof module !== "undefined") {
+  module.exports = MODULO_CRIMINOLOGIA_MUNDIAL;
+}
    
 
 // --------------------------------------------------------------------------
