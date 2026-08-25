@@ -9195,9 +9195,6 @@ const BANCO_DE_DADOS = [
           },
         ],
       },
-    ],
-  },
-];
 {
     id: "mod-5",
     titulo: "Módulo Especial: Autores da Criminologia Mundial",
@@ -9530,7 +9527,6 @@ const BANCO_DE_DADOS = [
     },
   ],
 };
- ]; 
 
 
 // --------------------------------------------------------------------------
